@@ -1,3 +1,4 @@
+@import url(https://cdn.jsdelivr.net/gh/theeluwin/NotoSansKR-Hestia@master/stylesheets/NotoSansKR-Hestia.css);
 .App {
   text-align: center;
 }
@@ -35,4 +36,140 @@
   to {
     transform: rotate(360deg);
   }
+}
+.image_wrap {
+  position: relative;
+  overflow:hidden;
+
+}
+.background {
+  width: 100%;
+  filter: blur(1px);
+
+}
+
+.dim {
+  background-color: rgba(0,0,0,0.6);
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity:0;
+
+}
+
+.alert {
+  position : fixed;
+  width : calc(100% - 40px);
+  height: 140px;
+  background-color: #FFFFFF;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 3;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  transform: translateY(150%);
+  transition: all 0.5s ease-in-out;
+}
+
+.alert > .title {
+  font-family: 'Noto Sans Korean', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #222222;
+  letter-spacing: -0.025em;
+  padding-left: 16px;
+  height: 48px;
+  line-height: 48px;
+}
+
+.alert > .body {
+  font-family: 'Noto Sans Korean', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #222222;
+  letter-spacing: -0.025em;
+  padding-left: 16px;
+  padding-top: 20px;
+  height: 44px;
+  line-height: 22px;
+}
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background-color: #ddd;
+  position: relative;
+  top:0;
+  left:0;
+}
+
+.progressBar-root {
+  position : relative;
+  overflow : hidden;
+  background-color: #ddd;
+  height: 4px;
+}
+
+.actionArea {
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+  background-color: #FFFFFF;
+  top: 24.5%;
+  box-shadow: 0 0 15px rgb(0,0,0);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.toggle {
+
+  opacity: 1;
+  transition: all 0.5s ease-in-out 1s;
+}
+
+.alerttoggle {
+  transform: translateY(0);
+  transition: all 0.5s ease-in-out 1s;
+
+}
+
+.congraturation {
+  background-color: rgb(0,115,240);
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  z-index: 5;
+  transition: all 0.3s ease-in-out 0.3s;
+  
+}
+.congraturationToggle {
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.congraturation span{
+  height: 100%;
+  text-align: center;
+  transition: all 0.3s ease-in-out 0.3s;
+  width: 100%;
+  position: absolute;
+  line-height: 140px;
+  color: #FFFFFF;
+  font-size: 0px;
+  font-family: 'Noto Sans Korean';
+  font-weight: 500;
+}
+.congraturationToggle span{
+  height: 100%;
+  text-align: center;
+  transition: all 0.3s ease-in-out 0.3s;
+  width: 100%;
+  position: absolute;
+  line-height: 140px;
+  color: #FFFFFF;
+  font-size: 46px;
+  font-family: 'Noto Sans Korean';
+  font-weight: 500;
 }
