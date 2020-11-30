@@ -5,69 +5,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="wyd editor tutorial" />
-        <link rel="stylesheet" href="./intro.css" />
+        <link rel="stylesheet" href="./end.css" />
         <title>wyd editor Tutorial</title>
-        <script>
-            function searchParam(key) {
-                return new URLSearchParams(location.search).get(key);
-            }
-
-            const URL = 'index.html';
-            let chkNewUser;
-
-            if (searchParam("newUser")==="true") {
-                chkNewUser = "true";
-            }
-
-            else {
-                chkNewUser = "false";
-            }
-
-            const GoTutorial = (typeID) => {
-                let tutorialURL = URL + "?type=" + typeID + "&newUser=" + chkNewUser;
-                document.location.href = tutorialURL
-            }
-        </script>
     </head>
     <body>
-        <div class="header">
-            <ul>
-                <li class="btn-back">
-                    <button type="button"><span class="offscreen">이전 페이지</span></button>
-                </li>
-            </ul>
-        </div>
         <div class="main">
-            <div class="page-title">
-                <h1>튜토리얼</h1>
-                <p>원하는 편집 방법 선택</p>
-                <span
-                    >본인에게 편한 편집 스타일을 선택해 보세요.<br />
-                    그에 맞는 사용법을 알려드립니다.</span
-                >
+            <div class="completion-container">
+                <div class="completion-group" id="completion-group">
+                    <i class="icon type-check"></i>
+                    <div class="completion-head"><span>튜토리얼 완료</span></div>
+                    <!-- 개발전달 1030 문구수정-->
+                    <!-- <p class="completion-body">이제 편집툴을 활용해 <br />당신만의 콘텐츠를 만들어보세요.</p> -->
+                </div>
             </div>
-            <div class="selectArea">
-                <ul class="type-list">
-                    <li>
-                        <button class="type-info" type="button" onclick="GoTutorial('influencer')">
-                            <div class="tit">인플루언서형</div>
-                            <div class="des">내가 나와서 진행하고, 자막, 음악까지!</div>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="type-info" type="button" onclick="GoTutorial('dubbing')">
-                            <div class="tit">더빙형</div>
-                            <div class="des">촬영한 영상에 더빙으로 설명하고 싶다면!</div>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="type-info" type="button" onclick="GoTutorial('chobo')">
-                            <div class="tit">초보형</div>
-                            <div class="des">촬영한 영상에 간단히 자막만 넣고 싶다면!</div>
-                        </button>
-                    </li>
-                </ul>
+            <div class="bottom-btn-wrap space">
+                <button class="btn-line-gray" type="button">편집 시작하기</button>
+
             </div>
+            <script>
+                function searchParam(key) {
+                    return new URLSearchParams(location.search).get(key);
+                }
+
+                const URL = "index.html";
+                let chkNewUser;
+
+                const parent = document.getElementById("completion-group");
+                const normalP = document.createElement("p");
+                const newP = document.createElement("p");
+
+                normalP.classList.add("completion-body");
+                newP.classList.add("completion-body");
+                console.log(normalP);
+                console.log(parent);
+                normalP.innerText = "이제 편집툴을 활용해 \n 당신만의 콘텐츠를 만들어보세요.";
+                newP.innerText = "편집툴을 이용해 첫 영상을 제작하면 \n 3,000원의 wyd머니를 제공합니다.";
+
+                // normalP.appendChild(normalText);
+                // newP.append(newText);
+
+                if (searchParam("newUser") === "true") {
+                    parent.appendChild(newP);
+                } else {
+                    parent.appendChild(normalP);
+                }
+            </script>
         </div>
     </body>
 </html>
