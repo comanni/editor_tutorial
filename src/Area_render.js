@@ -25,7 +25,7 @@ const AreaRender = ({ resultPages, maxpageNum }) => {
         console.log(value)
 
     }, []);
-console.log(maxpageNum)
+
     // const testfn = () => {
 
     //     return(

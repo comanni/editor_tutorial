@@ -8,6 +8,7 @@ function App() {
   return (
     <div>
       <Route path="/" component={Tutorial} />
+      {/* <Tutorial /> */}
     </div>
   );
 }

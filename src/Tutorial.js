@@ -1,163 +1,205 @@
 import { useEffect, useState } from "react";
 
+import Slider from "react-slick";
+import { useRef } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import qs from "qs";
+import ActionArea from "./ActionArea";
+import ImageSlide from "./ImageSlide";
+import pagesList from './Pagelist' ;
 
-const Tutorial = () => {
-    const [num, setNum] = useState(1)
+const Tutorial = ({ history, location }) => {
+    const [num, setNum] = useState(0);
+    const [percent, setPercent] = useState(0);
     const [transitionToggle, setTransitionToggle] = useState({
         background: false,
         alert: false,
-        congraturation: false
+        congraturation: false,
     });
     let newPageNum = 0;
+    console.log("tutorial페이지로딩")
+    const typelist = [
+        {
+            type: "influencer",
+            page: [1, 2, 3, 4],
+        },
+        {
+            type: "dubbing",
+            page: [1, 3, 5],
+        },
+        {
+            type: "chobo",
+            page: [1, 2, 3],
+        }
+    ];
 
+    let selectedPage;
+    let pages = [];
+
+    // url에서 선택한 type 받아옴
+    const query = qs.parse(location.search, { ignoreQueryPrefix: true });
+    const userType = typelist.find((e) => e.type === query.type);
+
+    // function searchParam(key) {
+    //     return new URLSearchParams(location.search).get(key);
+    // }
+    // const userType = typelist.find((e) => e.type === searchParam('type'));
+    //type에 맞는 튜토리얼 골라서 배열에 등록
+    if (userType !== undefined) {
+        selectedPage = userType.page;
+        selectedPage.forEach((x, idx, array) => {
+            pages.push(pagesList.find((e) => e.id === x));
+        });
+        console.log(pages);
+    } else {
+        pages = pagesList;
+    }
+    console.log(pages)
+    // 표시될 Value 저장
     const [value, setValue] = useState({
         title: "",
         body: "",
         bgImage: "",
-        fn:"",
-        pageNum:0,
-        showPageNum:1,
-        maxPageNum: 3,
-        percent: 0
-
+        fn: "",
+        pageNum: 0,
+        showPageNum: 1,
+        maxPageNum: pages.length,
+        percent: 0,
+        pageID: pages[0].id,
+        success: pages[0].success,
+        nextPageID: pages[1].id
     });
+
+    // action을 취하는 경우
     const handlechange = (e) => {
-        setNum(num + 1)
-        setValue({
-            ...value,
-            percent: value.showPageNum * 100 / value.maxPageNum
-        })
+        console.log(value)
+        setNum(num + 1);
+        setPercent((value.showPageNum * 100) / value.maxPageNum)
+
+
+
+        // setValue({
+        //     ...value,
+        //     percent: (value.showPageNum * 100) / value.maxPageNum,
+        //     // title: pages[num-1].title,
+        //     // body: pages[num-1].body
+        // });
+
+        // 배경화면 어둡게 한 것 제거
         setTransitionToggle({
             ...transitionToggle,
-            background:false
-        })
+            background: false,
+            alert: true,
+            congraturation: false,
+        });
+
+        // 0.5초 후 congraturation 표시
         setTimeout(() => {
             setTransitionToggle({
                 ...transitionToggle,
-                background:false,
-                congraturation: true
-            })
-            setValue({
-                ...value,
-                title: pages[num].title,
-                body: pages[num].body,
-                fn: pages[num].fn,
-                pageNum: num,
-                showPageNum: num + 1,
-                percent: value.showPageNum * 100 / value.maxPageNum
-    
-            })}, 500)
+                background: false,
+                alert: true,
+                congraturation: true,
+            });
+            if (value.showPageNum === value.maxPageNum) {
+                // setTimeout(() => {
+                    nextButton.current.innerText = "완료"
+                // }, 500);
+            }
+        }, 500);
 
+    };
 
-        console.log(value)
+    const nextButtonClick = (e) => {
+        
+        // 튜토리얼 종료 여부 확인
+        if (value.showPageNum === value.maxPageNum) {
+            // setTimeout(() => {
+                let chkNewUser;
+                query.newUser === "true" ? chkNewUser = true : chkNewUser = false;
+                document.location.href = "./end.html?newUser=" + chkNewUser
+            // }, 500);
+        }
 
-        setTimeout(() => {setTransitionToggle({
-            ...transitionToggle,
-            background: true,
-            congraturation: false
-        }); console.log(value)}, 7000)
+        //종료가 아닌 경우
+        else {
+            // setTimeout(() => {
+                let nextPageID;
+                if (num+1 < pages.length) {
+                    
+                }
+                else {
+                    nextPageID = false
+                }
+                setTransitionToggle({
+                    ...transitionToggle,
+                    background: true,
+                    congraturation: false,
+                });
+                setValue({
+                    ...value,
+                    title: pages[num].title,
+                    body: pages[num].body,
+                    pageNum: num,
+                    showPageNum: num+1,
+                    percent: (value.showPageNum * 100) / value.maxPageNum,
+                    pageID: pages[num].id,
+                    nextPageID: nextPageID,
+                    success: pages[num].success,
+                });
+                sliderArea.current.slickNext();
+                console.log(value);
+            // }, 3000);
+        }
     }
-    const testfn = (
-            <div onClick={handlechange} test="qq" value="tt" style={{ width: "calc(100% - 40px)", height: "48px", margin: "10px 20px", border: "1px solid #333", borderRadius: "4px", lineHeight: "48px" }}>테스트</div>
-        )
-    
-
-
     // 페이지별 들어가야할 내용 정리
-    const pages = [
-        {
-            id: 1,
-            title: "titleTest1",
-            body: "테스트바디\nTest",
-            bgImage: "",
-            fn:testfn
-        },
-        {
-            id: 2,
-            title: "titleTest2",
-            body: "테스트바디2",
-            bgImage: "",
-            fn:testfn
-        },
-        {
-            id: 3,
-            title: "titleTest3",
-            body: "",
-            bgImage: "",
-        },
-    ];
 
+    const sliderArea = useRef();
+    const nextButton = useRef();
+    const firework = <div className="after"></div>;
 
-
-
-
+// 로딩 시 어둡게 + 알럿바 표시
     useEffect(() => {
         setTransitionToggle({
             ...transitionToggle,
             background: true,
-            alert: true
+            alert: true,
         });
         setValue({
             ...value,
             title: pages[0].title,
             body: pages[0].body,
-            fn: pages[0].fn,
+            success: pages[0].success,
+
         });
-        console.log("useEFFECT")
-    },[])
+        console.log(value)
+    }, []);
 
-    useEffect(() => {
-        console.log(pages, value)
-    }, [pages, value])
-    
-
-
-
-    // const [data, setData] = useState({
-    //     pageNum: 0,
-    //     maxPageNum: 0
-    // })
-    // URL query에서 받아온 userType 확인
-    // const userType = userTypeArray.find((e) => e.type === query.type);
-
-    // Type에 맞게 정리된 페이지가 들어갈 배열
-    // const pages = [];
-
-    // useLayoutEffect(() => {
-    //     // URL query에서 들어온 값이 유효한 값이라면, type에 맞는 페이지 추출
-    //     if (userType !== undefined) {
-    //         let pagelist = userType.page;
-    
-    //         pagelist.forEach(i => {
-    //             pages.push(pages.find((e) => e.id === i));
-
-    //         // for (let i = 0; i < pagelist.length; i++) {
-    //         //     pages.push(pages.find((e) => e.id === pagelist[i]));
-    //         // }
-
-            
-    //     })
-    // }
-    // },[]);
 
 
     return (
         <>
-            <div>
             <div className="image_wrap">
-                <img className="background" src="/img/test_image.png"></img>
-                <div className={`actionArea ${transitionToggle.background ? "toggle" : ""}`}>
-                <div onClick={handlechange} test="qq" value="tt" style={{ width: "calc(100% - 40px)", height: "48px", margin: "10px 20px", border: "1px solid #333", borderRadius: "4px", lineHeight: "48px" }}>테스트</div>
-      
-                </div>
+                <ImageSlide sliderArea={sliderArea} transitionToggle={transitionToggle} />
+                <ActionArea handlechange={handlechange} transitionToggle={transitionToggle} value={value} />
             </div>
+
             <div className={`dim ${transitionToggle.background ? "toggle" : ""}`}></div>
 
             <div className={`alert ${transitionToggle.alert ? "alerttoggle" : ""}`}>
-                <div className={`congraturation ${transitionToggle.congraturation ? "congraturationToggle" : ""}`}><span> {transitionToggle.congraturation ? "성공" : ""}</span></div>
-    <div className="title">{value.title} ({value.pageNum + 1}/{value.maxPageNum})</div>
+                <div className={`congraturation ${transitionToggle.congraturation ? "congraturationToggle" : ""}`}>
+                    <span className="title"> {transitionToggle.congraturation ? `${value.title} 완료` : ""}</span>
+                    <span className="body">{transitionToggle.congraturation ? `${value.success}` : ""}</span>
+                    {transitionToggle.congraturation ?<button type="button" onClick={nextButtonClick} ref={nextButton}>다음</button>:""}
+                    
+                    {transitionToggle.congraturation ? firework : ""}
+                </div>
+                <div className="title">
+                    {value.title} ({value.pageNum + 1}/{value.maxPageNum})
+                </div>
                 <div className="progressBar-root">
-                    <div className="progressBar" style={{ backgroundColor: "rgb(0,115,240)", transform: `translateX(${-100 + value.percent}%)` ,transition: "all 0.3s ease-in-out"}}></div>
+                    <div className="progressBar" style={{ backgroundColor: "rgb(0,115,240)", transform: `translateX(${-100 + percent}%)`, transition: "all 0.3s ease-in-out" }}></div>
                 </div>
                 <div className="body">
                     {value.body.split("\n").map((line) => {
@@ -170,8 +212,7 @@ const Tutorial = () => {
                     })}
                 </div>
             </div>
- {/* <AreaRender pages={pages} maxPageNum={maxPageNum} ></AreaRender> */}
-            </div>
+
         </>
     );
 };

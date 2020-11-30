@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="wyd editor tutorial" />
+        <link rel="stylesheet" href="./intro.css" />
+        <title>wyd editor Tutorial</title>
+        <script>
+            function searchParam(key) {
+                return new URLSearchParams(location.search).get(key);
+            }
+
+            const URL = 'index.html';
+            let chkNewUser;
+
+            if (searchParam("newUser")==="true") {
+                chkNewUser = "true";
+            }
+
+            else {
+                chkNewUser = "false";
+            }
+
+            const GoTutorial = (typeID) => {
+                let tutorialURL = URL + "?type=" + typeID + "&newUser=" + chkNewUser;
+                document.location.href = tutorialURL
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <ul>
+                <li class="btn-back">
+                    <button type="button"><span class="offscreen">이전 페이지</span></button>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="page-title">
+                <h1>튜토리얼</h1>
+                <p>원하는 편집 방법 선택</p>
+                <span
+                    >본인에게 편한 편집 스타일을 선택해 보세요.<br />
+                    그에 맞는 사용법을 알려드립니다.</span
+                >
+            </div>
+            <div class="selectArea">
+                <ul class="type-list">
+                    <li>
+                        <button class="type-info" type="button" onclick="GoTutorial('influencer')">
+                            <div class="tit">인플루언서형</div>
+                            <div class="des">내가 나와서 진행하고, 자막, 음악까지!</div>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="type-info" type="button" onclick="GoTutorial('dubbing')">
+                            <div class="tit">더빙형</div>
+                            <div class="des">촬영한 영상에 더빙으로 설명하고 싶다면!</div>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="type-info" type="button" onclick="GoTutorial('chobo')">
+                            <div class="tit">초보형</div>
+                            <div class="des">촬영한 영상에 간단히 자막만 넣고 싶다면!</div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
