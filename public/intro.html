@@ -27,13 +27,23 @@
                 let tutorialURL = URL + "?type=" + typeID + "&newUser=" + chkNewUser;
                 document.location.href = tutorialURL
             }
+            function exit() {
+                const UA = navigator.userAgent.toLowerCase();
+        if (UA.indexOf("android") >-1){
+            window.android.closePopupWindow();
+        }
+        else if (UA.indexOf("iphone")>-1||UA.indexOf("ipad")>-1||UA.indexOf("ipod")>-1){
+            window.webkit.messageHandlers.closePopupWindow.postMessage();
+        }
+            }
+
         </script>
     </head>
     <body>
         <div class="header">
             <ul>
                 <li class="btn-back">
-                    <button type="button"><span class="offscreen">이전 페이지</span></button>
+                    <!-- <button type="button"><span class="offscreen">이전 페이지</span></button> -->
                 </li>
             </ul>
         </div>
@@ -50,24 +60,27 @@
                 <ul class="type-list">
                     <li>
                         <button class="type-info" type="button" onclick="GoTutorial('influencer')">
-                            <div class="tit">인플루언서형</div>
-                            <div class="des">내가 나와서 진행하고, 자막, 음악까지!</div>
+                            <div class="tit">인플루언서 Type</div>
+                            <div class="des">wyd editor의 모든 기능을 체험해보세요.</div>
+                            
                         </button>
                     </li>
                     <li>
                         <button class="type-info" type="button" onclick="GoTutorial('dubbing')">
-                            <div class="tit">더빙형</div>
+                            <div class="tit">더빙 Type</div>
                             <div class="des">촬영한 영상에 더빙으로 설명하고 싶다면!</div>
                         </button>
                     </li>
                     <li>
                         <button class="type-info" type="button" onclick="GoTutorial('chobo')">
-                            <div class="tit">초보형</div>
+                            <div class="tit">초보 Type</div>
                             <div class="des">촬영한 영상에 간단히 자막만 넣고 싶다면!</div>
                         </button>
                     </li>
                 </ul>
             </div>
+            
         </div>
+        <div class="exit" onclick="exit()">튜토리얼 없이 편집하기</div>
     </body>
 </html>

@@ -14,12 +14,10 @@
                 <div class="completion-group" id="completion-group">
                     <i class="icon type-check"></i>
                     <div class="completion-head"><span>튜토리얼 완료</span></div>
-                    <!-- 개발전달 1030 문구수정-->
-                    <!-- <p class="completion-body">이제 편집툴을 활용해 <br />당신만의 콘텐츠를 만들어보세요.</p> -->
                 </div>
             </div>
             <div class="bottom-btn-wrap space">
-                <button class="btn-line-gray" type="button">편집 시작하기</button>
+                <button class="btn-line-gray" type="button" id="goEdit">편집 시작하기</button>
 
             </div>
             <script>
@@ -36,8 +34,7 @@
 
                 normalP.classList.add("completion-body");
                 newP.classList.add("completion-body");
-                console.log(normalP);
-                console.log(parent);
+
                 normalP.innerText = "이제 편집툴을 활용해 \n 당신만의 콘텐츠를 만들어보세요.";
                 newP.innerText = "편집툴을 이용해 첫 영상을 제작하면 \n 3,000원의 wyd머니를 제공합니다.";
 
@@ -49,6 +46,17 @@
                 } else {
                     parent.appendChild(normalP);
                 }
+
+                const goEdit = document.getElementById("goEdit")
+                goEdit.addEventListener('click', () => {
+                    const UA = navigator.userAgent.toLowerCase();
+        if (UA.indexOf("android") >-1){
+            window.android.closePopupWindow();
+        }
+        else if (UA.indexOf("iphone")>-1||UA.indexOf("ipad")>-1||UA.indexOf("ipod")>-1){
+            window.webkit.messageHandlers.closePopupWindow.postMessage();
+        }
+                })
             </script>
         </div>
     </body>

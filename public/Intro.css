@@ -1,15 +1,30 @@
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    src: local("Noto Sans KR"), url(./fonts/NotoSans-Regular.woff2) format("woff2")
+  }
+  
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    src: local("Noto Sans KR"), url(./fonts/NotoSans-Medium.woff2) format("woff2")
+  }
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 700;
+    src: local("Noto Sans KR"), url(./fonts/NotoSans-Bold.woff2) format("woff2")
+  }
+  
 @media screen and (min-width: 750px) {
-    :root {
-        background:#000
-    }
 
     html {
         font-size: 28px
     }
 
-    body {
-        background: #fff
-    }
 }
 
 @media screen and (max-width: 749px) {
@@ -270,6 +285,22 @@
     }
 }
 
+html, body {
+height: 100%;
+margin:0;
+}
+input:focus, button:focus {
+    outline:none;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: -.7px
+}
+
 img,button {
     border: 0
 }
@@ -285,6 +316,7 @@ img,button {
     align-items: center;
     position: relative;
     height: 4rem;
+    min-height: 4rem;
     background-color: rgba(255, 255, 255, 1)
 }
 .header>ul {
@@ -342,6 +374,12 @@ img,button {
     border: 0;
     padding: 0;
     background-color: pink
+}
+
+.main {
+    display:flex;
+    flex-direction: column;
+
 }
 
 .page-title {
@@ -451,9 +489,10 @@ img,button {
 }
 
 .type-list > li .type-info .tit {
-    font-size: 2.28571429rem;
+    font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
+    font-size: 1.4285rem;
     color: #333;
-    font-weight: 700;
+    font-weight: 500;
     font-style: normal;
     margin-bottom: 1rem;
     letter-spacing: -1.6px;
@@ -461,9 +500,22 @@ img,button {
 }
 
 .type-list > li .type-info .des {
+    font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
     font-size: 1.14285714rem;
     color: #333;
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
     line-height: 1.2;
+}
+
+.exit {
+    text-align: center;
+    margin-top: auto;
+    bottom: 20px;
+    padding: 15px;
+    font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: -.7px;
+    font-size: 1.14285714rem;
+    color: #999;
 }
