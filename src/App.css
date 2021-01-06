@@ -372,50 +372,51 @@ button {
 /* 하단 메세지 표시 영역 */
 .alert {
   position: fixed;
-  width: 100%;
-  height: 12.8571428571rem;
+  width: 94%;
+  height: 8rem;
   background-color: #FFFFFF;
-  bottom: 0px;
-  left: 0px;
+  bottom: 2%;
+  left: 3%;
   right: 0px;
   z-index: 3;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   transform: translateY(150%);
   transition: all 0.5s ease-in-out;
+  background: linear-gradient(135deg, #fff 0%, #fff 40%, #F9F9F9 41%, #FaFaFa 100%);
+  background-image:url(./test.jpg);
+  background-size: 100%;
 }
 
-.exit {
-  position: absolute;
-  right: 1.4285714286rem;
-  top: 1.4285714286rem;
-  font-size: 1.4285714286rem;
-}
+
 
 .alert>.title {
   font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
-  color: #222222;
-  /* color: #FFFFFF; */
+  /* color: #222222; */
+  color: #FFFFFF;
   letter-spacing: -0.025em;
   padding-left: 1.1428571429rem;
   height: 3.4285714286rem;
   line-height: 3.4285714286rem;
   font-size: 1.4285714286rem;
   font-weight: 600;
-  padding-top: 0.7142857143rem;
+  padding-top: 0.3142857143rem;
 }
 
 .alert>.body {
   font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
   font-weight: 400;
   font-size: 1.1428571429rem;
-  color: #515151;
+  /* color: #515151; */
   letter-spacing: -0.025em;
-  padding-left: 1.1428571429rem;
-  padding-right: 1.1428571429rem;
-  padding-top: 1.0714285714rem;
-  line-height: 1.8571428571rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  /* padding-top: 1.0714285714rem; */
+  line-height: 1.6571428571rem;
+  color: #FFFFFF;
+  text-shadow: -1px -1px 3px #000;
 }
 
 .progressBar {
@@ -435,6 +436,7 @@ button {
   height: 1.7857142857rem;
   /* margin-top: 20px; */
   margin-top: auto;
+  border-radius: 0 0 6px 6px;
 }
 
 .progressBar-text {
@@ -469,7 +471,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
+  border-radius: 6px;
 }
 
 .congraturationToggle {
@@ -681,7 +683,7 @@ button {
 }
 
 .btn-close {
-  background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='33' height='33'%3E%3Cpath fill='rgba(34, 34, 34, 1)' fill-rule='evenodd' d='M18.89 16.937l12.626 12.626c.781.781.781 2.047 0 2.828-.781.781-2.047.781-2.828 0L15.992 19.696 3.402 32.392c-.773.78-2.027.78-2.8 0-.772-.779-.772-2.043 0-2.822l12.496-12.602L.633 4.399c-.773-.78-.773-2.044 0-2.823.773-.78 2.027-.78 2.799 0L15.961 14.21 28.656 1.514c.781-.781 2.048-.781 2.829 0 .781.781.781 2.048 0 2.829L18.89 16.937z'/%3E%3C/svg%3E%0A");
+  background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='33' height='33'%3E%3Cpath fill='rgba(200, 200, 200, 1)' fill-rule='evenodd' d='M18.89 16.937l12.626 12.626c.781.781.781 2.047 0 2.828-.781.781-2.047.781-2.828 0L15.992 19.696 3.402 32.392c-.773.78-2.027.78-2.8 0-.772-.779-.772-2.043 0-2.822l12.496-12.602L.633 4.399c-.773-.78-.773-2.044 0-2.823.773-.78 2.027-.78 2.799 0L15.961 14.21 28.656 1.514c.781-.781 2.048-.781 2.829 0 .781.781.781 2.048 0 2.829L18.89 16.937z'/%3E%3C/svg%3E%0A");
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 1.17857143rem;
@@ -777,4 +779,40 @@ button {
   to {
     margin-top: -1.5%;
   }
+}
+
+.test {
+  display:flex;
+  flex-direction: row;
+  /* padding: 15px 10px 0 10px; */
+  /* margin: 0 10px; */
+  position: fixed;
+  top:19px;
+  left:2%;
+  width: 85%;
+}
+.test .item {
+  background-color: rgba(177,177,177,0.3);
+    height: 4px;
+    width: 100%;
+    margin: 0 2px;
+    border-radius: 6px;
+}
+.test .toggle {
+  background-color: rgb(0, 115, 240);
+}
+
+.test_wrap .background {
+width: 100%;
+height: 40px;
+background: linear-gradient(180deg, #000000 0%, #00000000 90%);
+position: fixed;
+top: 0;
+}
+
+.exit {
+  position: absolute;
+  right: 0.4285714286rem;
+  top: 0.4285714286rem;
+  font-size: 1.4285714286rem;
 }
