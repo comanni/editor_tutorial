@@ -99,7 +99,7 @@ const Tutorial = ({ history, location }) => {
       body:
         "이번 영상에서 담아볼 소재를 선택해보세요. \n선택한 내용에 맞는 촬영 가이드를 제공해드립니다.",
       success:
-        "선택한 순서에 따라서 촬영 순서도 결정되니 \n원하는 순서대로 선택해보세요.",
+        "선택한 순서에 따라서 촬영 순서도 결정됩니다.",
       position: [13, 5.8, 0.4, 0.8177777778],
       screenUp: false,
       actiondiv: [
