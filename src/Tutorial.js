@@ -757,15 +757,21 @@ const Tutorial = ({ history, location }) => {
     const typelist = [
         {
             type: "influencer",
-            page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            iOS_page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            AOS_page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            device: "AOS"
         },
         {
             type: "dubbing",
-            page: [1, 2, 3, 5, 10, 12],
+            iOS_page: [1, 2, 3, 5, 10, 12],
+            AOS_page: [1, 2, 3, 5, 10, 12],
+            device: "AOS"
         },
         {
             type: "chobo",
-            page: [1, 2, 3, 5, 10],
+            iOS_page: [1, 2, 3, 5, 10],
+            AOS_page: [1, 2, 3, 5, 10],
+            device: "AOS"
         },
         {
             type: "test",
@@ -794,7 +800,13 @@ const Tutorial = ({ history, location }) => {
 
         // 객체에 등록되어있는 페이지를 찾아서 리스트에 넣는다.
         else{
-        selectedPage = userType.page;
+            if (query.device === "iOS") {
+                selectedPage = userType["iOS_page"];
+            } else{
+                selectedPage = userType["AOS_page"];
+            }
+
+
         selectedPage.forEach((x, idx, array) => {
             pages.push(pagesList.find((e) => e.id === x));
         });
