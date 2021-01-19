@@ -28,8 +28,13 @@
       }
 
       const goBack = () => {
-        // document.location.href = `${URL}?newUser=${chkNewUser}&device=${chkDevice}`;
-        history.back();
+
+        if (document.referrer.indexOf("intro.html") > -1) {
+          history.back();
+        }
+        else {
+        document.location.href = `${URL}?newUser=${chkNewUser}&device=${chkDevice}`;
+        }
       };
       function exit() {
         const UA = navigator.userAgent.toLowerCase();
