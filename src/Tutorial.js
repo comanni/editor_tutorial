@@ -822,9 +822,19 @@ const Tutorial = ({ history, location }) => {
 
         // 1. 튜토리얼 종료 시
         if (value.showPageNum === value.maxPageNum) {
+
+            // 신규 유저 처리
             let chkNewUser;
             query.newUser === "true" ? (chkNewUser = true) : (chkNewUser = false);
+            if (query.type === "individual" ) {
+                const device = query.device;
+
+                document.location.href =`./individual.html?newUser=${chkNewUser}&device=${device}`
+            }
+            // 이동
+            else {
             document.location.href = "./end.html?newUser=" + chkNewUser;
+            }
         }
 
         //2. 종료가 아닌 경우
