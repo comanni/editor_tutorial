@@ -771,6 +771,10 @@ const Tutorial = ({ history, location }) => {
             type: "test",
             page: [10,11, 12],
         },
+        {
+            type: "individual"
+        },
+
     ];
 
     let selectedPage;
@@ -780,12 +784,24 @@ const Tutorial = ({ history, location }) => {
     const query = qs.parse(location.search, { ignoreQueryPrefix: true });
     const userType = useMemo(() => typelist.find((e) => e.type === query.type), [query.type]);
 
+    // userType이 지정된 경우
     if (userType !== undefined) {
+
+        // userType이 아닌 individual인 경우 해당 페이지를 호출한다.
+        if (query.type === "individual") {
+            pages.push(pagesList.find(e => e.id === Number(query.page)));
+        }
+
+        // 객체에 등록되어있는 페이지를 찾아서 리스트에 넣는다.
+        else{
         selectedPage = userType.page;
         selectedPage.forEach((x, idx, array) => {
             pages.push(pagesList.find((e) => e.id === x));
         });
-    } else {
+    }
+    } 
+    // Usertype이 지정되지 않은 경우 모든 페이지를 불러온다.
+    else {
         pages = pagesList;
     }
 
@@ -803,13 +819,15 @@ const Tutorial = ({ history, location }) => {
 
     const nextButtonClick = (e) => {
         // 튜토리얼 종료 여부 확인
+
+        // 1. 튜토리얼 종료 시
         if (value.showPageNum === value.maxPageNum) {
             let chkNewUser;
             query.newUser === "true" ? (chkNewUser = true) : (chkNewUser = false);
             document.location.href = "./end.html?newUser=" + chkNewUser;
         }
 
-        //종료가 아닌 경우
+        //2. 종료가 아닌 경우
         else {
             // setTimeout(() => {
             // let nextPageID;

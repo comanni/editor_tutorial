@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="wyd editor tutorial" />
+    <link rel="stylesheet" href="./intro.css" />
+    <title>wyd editor Tutorial</title>
+    <script>
+      function searchParam(key) {
+        return new URLSearchParams(location.search).get(key);
+      }
+
+      const URL = "intro.html";
+      let chkNewUser;
+
+      if (searchParam("newUser") === "true") {
+        chkNewUser = "true";
+      } else {
+        chkNewUser = "false";
+      }
+
+      if (searchParam("device") === "iOS") {
+        chkDevice = "iOS";
+      } else {
+        chkDevice = "AOS";
+      }
+
+      const goBack = () => {
+        // document.location.href = `${URL}?newUser=${chkNewUser}&device=${chkDevice}`;
+        history.back();
+      };
+      function exit() {
+        const UA = navigator.userAgent.toLowerCase();
+        if (UA.indexOf("android") > -1) {
+          window.android.closePopupWindow();
+        } else if (
+          UA.indexOf("iphone") > -1 ||
+          UA.indexOf("ipad") > -1 ||
+          UA.indexOf("ipod") > -1
+        ) {
+          window.webkit.messageHandlers.closePopupWindow.postMessage();
+        }
+      }
+
+      const GoTutorial = (pageNo) => {
+        let tutorialURL = `index.html?type=individual&newUser=${chkNewUser}&device=${chkDevice}&page=${pageNo}`;
+        document.location.href = tutorialURL;
+      };
+
+
+    </script>
+    <style>
+      .selectArea {
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header" style="height: 4rem">
+      <ul>
+        <li class="btn-back">
+          <button type="button" onclick="goBack()">
+            <span class="offscreen">이전 페이지</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="main">
+      <div class="page-title">
+        <h1>기능 별 살펴보기</h1>
+
+        <!-- <p>원하는 편집 방법 선택</p> -->
+        <span>
+          원하는 기능을 선택하세요.<br />
+          그에 맞는 사용법을 알려드립니다.</span
+        >
+      </div>
+      <div class="selectArea">
+        <ul class="type-list">
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(1)">
+              <div class="image">
+                <span class="bold">1</span><span class="primary">핵심</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">촬영하고자 하는 소재 선택하기</div>
+                <div class="des">
+                  어떻게 촬영하면 좋을지 가이드를 받아보세요.
+                </div>
+              </div>
+            </button>
+          </li>
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(2)">
+              <div class="image">
+                <span class="bold">2</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">촬영하기</div>
+                <div class="des">촬영화면에 대해 알아보세요.</div>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(3)">
+              <div class="image">
+                <span class="bold">3</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">클립 길이 조절하기</div>
+                <div class="des">
+                  클립 길이 조절하는 방법에 대해 알아보세요.
+                </div>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(4)">
+              <div class="image">
+                <span class="bold">4</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">클립 편집 추가 기능 알아보기</div>
+                <div class="des">
+                  삭제, 음량 조절, 복사 기능에 대해 알아보세요.
+                </div>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(5)">
+              <div class="image">
+                <span class="bold">5</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">자막 추가하기</div>
+                <div class="des">클립에 자막 추가하는 방법을 알아보세요.</div>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(6)">
+              <div class="image">
+                <span class="bold">6</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">자막 스타일 변경하기</div>
+                <div class="des">
+                  자막 스타일 변경하는 방법에 대해 알아보세요.
+                </div>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(7)">
+              <div class="image">
+                <span class="bold">7</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">자막 표시 시간 조절하기</div>
+                <div class="des">자막의 표시 시간을 선택해보세요.</div>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(8)">
+              <div class="image">
+                <span class="bold">8</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">자막 여러 개 넣기</div>
+                <div class="des">한 클립에 여러 개의 자막을 넣어보세요.</div>
+              </div>
+            </button>
+          </li>
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(9)">
+              <div class="image">
+                <span class="bold">9</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">이미지 추가하기</div>
+                <div class="des">화면 위에 이미지를 추가해보세요.</div>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(10)">
+              <div class="image">
+                <span class="bold">10</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">음악 추가하기</div>
+                <div class="des">음악을 추가하는 방법에 대해 알아보세요.</div>
+              </div>
+            </button>
+          </li>
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(11)">
+              <div class="image">
+                <span class="bold">11</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">효과음 추가하기</div>
+                <div class="des">효과음을 추가하는 방법에 대해 알아보세요.</div>
+              </div>
+            </button>
+          </li>
+          <li>
+            <button class="type-info" type="button" onclick="GoTutorial(12)">
+              <div class="image">
+                <span class="bold">12</span><span class="secondary">추가</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">더빙하기</div>
+                <div class="des">최종적으로 녹음하는 방법에 대해 알아보세요.</div>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+            let innerHeight = window.innerHeight;
+      const headerHeightRem = 13.25; // 185.5 / 14
+      const selectArea = document.querySelector(".selectArea");
+
+
+      let widthRatio;
+      if (window.innerWidth >= 750) {
+        widthRatio = 28;
+      } else {
+        widthRatio = window.innerWidth * 0.0373333333;
+      }
+      let headerHeight = headerHeightRem * widthRatio;
+      let contentHeight = innerHeight - headerHeight;
+
+      selectArea.setAttribute("style", `height: ${contentHeight}px`);
+      // selectArea.setAttribute("overflow-y", "auto");
+    </script>
+  </body>
+</html>

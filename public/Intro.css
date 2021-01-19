@@ -315,8 +315,9 @@ img,button {
     -ms-flex-align: center;
     align-items: center;
     position: relative;
-    height: 4rem;
-    min-height: 4rem;
+    /* height: 1rem; */
+    max-height: 4rem;
+    height:100%;
     background-color: rgba(255, 255, 255, 1)
 }
 .header>ul {
@@ -406,7 +407,12 @@ img,button {
     font-weight: 500;
     font-style: normal;
     line-height: 2.39285714rem;
-    margin-bottom: 3.46428571rem
+    margin-bottom: 1.06428571rem
+}
+.page-title .whitespace {
+    width: 100%;
+    height: 100%;
+    max-height: 2.4rem;
 }
 .page-title p {
     margin: 0;
@@ -441,6 +447,7 @@ img,button {
 .selectArea {
     position: relative;
     padding: 1.14285714rem;
+    padding-top:0;
 }
 .type-list {
     margin: 0;
@@ -458,7 +465,7 @@ img,button {
     border-radius: .57142857rem;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 1.17857143rem .71428571rem .89285714rem 1.60714286rem;
+    padding: 1rem .71428571rem .79285714rem .71428571rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -486,28 +493,75 @@ img,button {
     letter-spacing: -.03571429rem;
     width: 100%;
     text-align: left;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.type-list > li .type-info .image {
+    width: 3rem !important;
+    /* height: 3.3rem; */
+    /* background-color: red; */
+    margin-right: 1rem;
+    text-align:center;
+    line-height:1.2;
+    /* padding-top: 0.2rem; */
+    color: #666;
+    display:flex;
+    flex-direction:column;
+    padding-bottom: .2rem;
+}
+.type-list > li .type-info .image .bold {
+    font-size: 1.5rem;
+    color: #333;
 }
 
+.type-list > li .type-info .image .primary {
+    font-size: 0.7rem;
+    color: #333;
+    background-color: rgb(0, 115,240);
+    padding: 0.2rem;
+    color: #FFFFFF;
+    border-radius: .3rem;
+    margin-top:.2rem;
+}
+
+.type-list > li .type-info .image .secondary {
+    font-size: 0.7rem;
+    background-color: #eee;
+    padding: 0.2rem;
+    color: #666;
+    border-radius: .3rem;
+    margin-top:.2rem;
+}
+
+
+.type-list > li .type-info .text-wrap {
+    display: flex;
+    flex-direction: column;
+}
 .type-list > li .type-info .tit {
     font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
-    font-size: 1.4285rem;
+    font-size: 1.2285rem;
     color: #333;
     font-weight: 500;
     font-style: normal;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
     letter-spacing: -1.6px;
     line-height: 1;
 }
 
 .type-list > li .type-info .des {
     font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
-    font-size: 1.14285714rem;
-    color: #333;
+    font-size: 1rem;
+    color: #666;
     font-weight: 400;
     font-style: normal;
     line-height: 1.2;
 }
-
+.width2 {
+height: 2rem;
+width: 100%;
+}
 .exit {
     text-align: center;
     margin-top: auto;
@@ -518,4 +572,16 @@ img,button {
     letter-spacing: -.7px;
     font-size: 1.14285714rem;
     color: #999;
+}
+
+.btn-back {
+    width: 4rem;
+    left: 0
+}
+
+.btn-back button {
+    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='40'%3E%3Cpath fill='rgba(0, 0, 0, 1)' fill-rule='evenodd' d='M21.899 3.929L5.828 20l16.071 16.071c.781.781.781 2.047 0 2.828-.781.782-2.047.782-2.828 0L.686 20.515 1.201 20l-.515-.515L19.071 1.1c.781-.781 2.047-.781 2.828 0 .781.781.781 2.048 0 2.829z'/%3E%3Cpath fill='rgba(0, 0, 0, 1)' fill-rule='evenodd' d='M7 18h39c1.105 0 2 .895 2 2 0 1.104-.895 2-2 2H7c-1.105 0-2-.896-2-2 0-1.105.895-2 2-2z'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 1.71428571rem 1.42857143rem
 }
