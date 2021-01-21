@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="./intro.css" />
     <title>wyd editor Tutorial</title>
     <script>
-      function searchParam(key) {
+function searchParam(key) {
         return new URLSearchParams(location.search).get(key);
       }
 
       const URL = "intro.html";
       let chkNewUser;
+      let chkDevice;
 
       if (searchParam("newUser") === "true") {
         chkNewUser = "true";
@@ -28,12 +29,10 @@
       }
 
       const goBack = () => {
-
         if (document.referrer.indexOf("intro.html") > -1) {
           history.back();
-        }
-        else {
-        document.location.href = `${URL}?newUser=${chkNewUser}&device=${chkDevice}`;
+        } else {
+          document.location.href = `${URL}?newUser=${chkNewUser}&device=${chkDevice}`;
         }
       };
       function exit() {
@@ -45,7 +44,7 @@
           UA.indexOf("ipad") > -1 ||
           UA.indexOf("ipod") > -1
         ) {
-          window.webkit.messageHandlers.closePopupWindow.postMessage();
+          window.webkit.messageHandlers.closePopupWindow.postMessage("");
         }
       }
 
@@ -54,7 +53,33 @@
         document.location.href = tutorialURL;
       };
 
+    </script>
+    <script type="module">
+      import data from "./individual_data.js";
+      
+      const ul = document.querySelector(".type-list");
 
+      data.forEach((e) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+        <button class="type-info" type="button" onclick="GoTutorial(${
+    chkDevice === "iOS" ? e["iOS_page"] : e["AOS_page"]
+  })">
+              <div class="image">
+                <span class="bold">${e.No}</span><span class="${e.class}">${
+          e.typeText
+        }</span>
+              </div>
+              <div class="text-wrap">
+                <div class="tit">${e.title}</div>
+                <div class="des">
+                  ${e.description}
+                </div>
+              </div>
+            </button>
+  `;
+        ul.appendChild(li);
+      });
     </script>
     <style>
       .selectArea {
@@ -84,7 +109,7 @@
       </div>
       <div class="selectArea">
         <ul class="type-list">
-          <li>
+          <!-- <li>
             <button class="type-info" type="button" onclick="GoTutorial(1)">
               <div class="image">
                 <span class="bold">1</span><span class="primary">핵심</span>
@@ -227,18 +252,19 @@
               </div>
               <div class="text-wrap">
                 <div class="tit">더빙하기</div>
-                <div class="des">최종적으로 녹음하는 방법에 대해 알아보세요.</div>
+                <div class="des">
+                  최종적으로 녹음하는 방법에 대해 알아보세요.
+                </div>
               </div>
             </button>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
     <script>
-            let innerHeight = window.innerHeight;
+      let innerHeight = window.innerHeight;
       const headerHeightRem = 13.25; // 185.5 / 14
       const selectArea = document.querySelector(".selectArea");
-
 
       let widthRatio;
       if (window.innerWidth >= 750) {
