@@ -1,7 +1,7 @@
 {
   "short_name": "wyd editor tutorial",
   "name": "wyd editor 사용을 위한 튜토리얼입니다.",
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
