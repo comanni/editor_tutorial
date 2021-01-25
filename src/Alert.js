@@ -9,7 +9,7 @@ const Alert = ({alert, setAlert}) => {
             window.android.closePopupWindow();
         }
         else if (UA.indexOf("iphone")>-1||UA.indexOf("ipad")>-1||UA.indexOf("ipod")>-1){
-            window.webkit.messageHandlers.closePopupWindow.postMessage();
+            window.webkit.messageHandlers.closePopupWindow.postMessage("");
         }
        
     };
