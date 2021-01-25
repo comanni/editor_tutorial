@@ -20,11 +20,24 @@
       } else {
         chkNewUser = "false";
       }
-      if (searchParam("device") === "iOS") {
-        chkDevice = "iOS";
-      } else {
-        chkDevice = "AOS";
-      }
+
+      const UA = navigator.userAgent.toLowerCase();
+        if (UA.indexOf("android") > -1) {
+          chkDevice = "AOS";
+        } else if (
+          UA.indexOf("iphone") > -1 ||
+          UA.indexOf("ipad") > -1 ||
+          UA.indexOf("ipod") > -1
+        ) {
+          chkDevice = "iOS";
+        }
+
+
+      // if (searchParam("device") === "iOS") {
+      //   chkDevice = "iOS";
+      // } else {
+      //   chkDevice = "AOS";
+      // }
       const GoTutorial = (typeID) => {
         let tutorialURL = `${URL}?type=${typeID}&newUser=${chkNewUser}&device=${chkDevice}`;
         document.location.href = tutorialURL;
