@@ -35,7 +35,7 @@ const Tutorial = ({ history, location }) => {
     widthRatio = window.innerWidth * 0.0373333333;
   }
 
-  let upHeight = calHeight - realHeight + 12.8571428571 * widthRatio;
+  let upHeight = calHeight - realHeight + 9 * widthRatio;
 
   if (upHeight <= 0) {
     upHeight = 0;
@@ -943,7 +943,9 @@ const Tutorial = ({ history, location }) => {
           dimPosition={dimPosition}
         />
       </div>
-      <div className="exitArea">
+      <div className={`${
+                transitionToggle.congraturation ? "exitAreaToggle" : ""
+              } exitArea`}>
               <div className="background"></div>
               <div className="exit">
                 <button
@@ -991,10 +993,10 @@ const Tutorial = ({ history, location }) => {
         </div>
         <div
           style={{
-            width: 50,
-            height: 50,
-            top: 10,
-            right: 10,
+            width: "3rem",
+            height: "3rem",
+            top: "0.714285714rem",
+            right: "0.714285714rem",
             position: "fixed",
           }}
         >
@@ -1021,7 +1023,7 @@ const Tutorial = ({ history, location }) => {
               backgroundColor: "#3e98c7",
             })}
           />
-          ;
+          
         </div>
         {/* <div className="progressBar-root">
                     <div className="progressBar" style={{ transform: `translateX(${-100 + percent}%)` }}></div>

@@ -357,11 +357,7 @@ button {
   opacity: 0;
 }
 
-.toggle {
-  opacity: 1;
-  display: block;
-  transition: opacity 0.2s ease-in-out 1s;
-}
+
 
 .actionArea > .content {
   transition: all 0.2s;
@@ -385,7 +381,11 @@ button {
   transform: translateY(150%);
   transition: all 0.5s ease-in-out;
   border-radius: 8px;
-  border: 2px solid #888888;
+  /* border: 2px solid #888888; */
+  background: rgba(0, 0, 0, 0.488);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 
@@ -396,12 +396,13 @@ button {
   /* color: #FFFFFF; */
   letter-spacing: -0.025em;
   padding-left: 1.1428571429rem;
-  height: 3.4285714286rem;
+  /* height: 3.4285714286rem; */
   line-height: 3.4285714286rem;
   font-size: 1.4285714286rem;
   font-weight: 600;
-  padding-top: 0.3142857143rem;
+  padding-top: 0.5142857143rem;
 }
+
 
 .alert>.body {
   font-family: "Roboto", "Noto Sans KR", 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Droid sans', sans-serif;
@@ -411,7 +412,7 @@ button {
   letter-spacing: -0.055em;
   padding-left: 1.1428571429rem;
   padding-right: 1.1428571429rem;
-  padding-top: 0.3714285714rem;
+  /* padding-top: 0.3714285714rem; */
   line-height: 1.8571428571rem;
 }
 
@@ -454,7 +455,7 @@ button {
 }
 
 .congraturation {
-  background: linear-gradient(0deg, rgb(0, 115, 240) 0%, rgb(0, 150,240) 100%);
+  background: linear-gradient(0deg, rgb(0, 116, 240) 0%, rgb(0, 148, 240) 100%);
   position: absolute;
   width: 100%;
   height: 0%;
@@ -782,6 +783,8 @@ button {
   top: 0;
   width: 100%;
   height: 60px;
+  transform: translateY(-60px);
+  transition: ease-in-out 1s;
 }
 
 .exitArea .background {
@@ -790,9 +793,18 @@ button {
   height: 50px;
 }
 
+.exitAreaToggle {
+
+  transform: translateY(0);
+}
 .exit {
   position: absolute;
   right: 0.7285714286rem;
   top: 0.7285714286rem;
   font-size: 1.4285714286rem;
+}
+.toggle {
+  opacity: 1;
+  display: block;
+  transition: opacity 0.2s ease-in-out 1s;
 }
