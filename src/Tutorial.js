@@ -849,7 +849,7 @@ const Tutorial = ({ history, location }) => {
 
 
     selectedPage.forEach((x, idx, array) => {
-      pages.push(pagesList.find((e) => e.id === x));
+        pages.push(pagesList.find((e) => e.id === x));
     });
 }
 } 
