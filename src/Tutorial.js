@@ -99,8 +99,8 @@ const Tutorial = ({ history, location }) => {
       id: 1,
       title: "촬영하고 싶은 소재 선택하기",
       body:
-        "이번 영상에서 담아볼 소재를 선택해보세요. \n선택한 내용에 맞는 촬영 가이드를 제공해드립니다.",
-      success: "선택한 순서에 따라서 촬영 순서도 결정됩니다.",
+        "영상에 담을 소재를 골라보세요. \n 촬영을 위한 가이드를 제공해 드릴께요.",
+      success: "촬영을 원하는 순서대로 선택해보세요.",
       position: [13, 5.8, 0.4, 0.8177777778],
       screenUp: false,
       actiondiv: [
@@ -116,7 +116,7 @@ const Tutorial = ({ history, location }) => {
       backgroundDivAfter: "tutorial_1_3",
       tooltipDiv: [
         {
-          body: "촬영하고자 하는 내용을 확인해 보세요.",
+          body: "촬영하고 싶은 내용을 선택하세요.",
           length: "75",
           arrowPosition: "bottom right",
           x: "30",
@@ -135,8 +135,8 @@ const Tutorial = ({ history, location }) => {
       id: 2,
       title: "촬영하기",
       body:
-        "콘텐츠를 만들 때 필요한 내용들을 알려드립니다.\n가이드를 참고하여 소재 별로 촬영을 진행해보세요.",
-      success: "가이드 내용 중 본인이 필요한 부분만 참고하세요.",
+        "소재 별 담아야할 이야기를 알려드립니다.\n가이드를 참고하여 소재 별로 촬영을 진행해보세요.",
+      success: "소재 단위로 차근차근 이야기를 정리해 보세요",
 
       position: [10, 4, 0.0541871921, 0.456],
       screenUp: false,
@@ -184,7 +184,7 @@ const Tutorial = ({ history, location }) => {
           y: "33",
         },
         {
-          body: "이 주제 촬영이 끝났다면 다음 소재 촬영하기를 누르세요.",
+          body: "'다음 소재 촬영하기'를 누르세요.",
           length: "90",
           arrowPosition: "top left",
           x: "6",
@@ -202,7 +202,7 @@ const Tutorial = ({ history, location }) => {
     {
       id: 3,
       title: "클립 길이 조절하기",
-      body: "클립을 선택한 후 시작점과 끝점을 \n원하는 위치까지 움직여보세요.",
+      body: "클립의 길이를 조절하는 방법을 익혀보세요.",
       success: "세부적인 조절을 위해서는 하단 화살표를 이용해보세요.",
       position: [70, 5.5, 0.5233990148, 0.2266666667],
       screenUp: true,
@@ -269,7 +269,7 @@ const Tutorial = ({ history, location }) => {
       id: 4,
       title: "클립 하단 기능 확인하기",
       body: "클립 하단에 있는 삭제, 음량, 복사, 추가 버튼을 사용해보세요.",
-      success: "한 클립을 여러 개로 나누어 쓸 때 복사 기능이 유용합니다.",
+      success: "클립 썸네일을 길게 누르면 순서를 조절할 수 있습니다.",
       position: [11.7, 5.7, 0.907635468, 0.0473333333],
       screenUp: true,
       actiondiv: [
@@ -318,14 +318,14 @@ const Tutorial = ({ history, location }) => {
           y: "80",
         },
         {
-          body: "클립의 소리를 조절하려면 터치하세요.",
+          body: "해당 클립의 음량을 조절하려면 터치하세요.",
           length: "70",
           arrowPosition: "bottom left",
           x: "24",
           y: "80",
         },
         {
-          body: "음량 조절 후 확인을 누르면 적용됩니다.",
+          body: "녹음된 소리를 더 키우거나 줄일 수 있습니다.",
           length: "80",
           arrowPosition: "bottom left",
           x: "24",
@@ -352,7 +352,7 @@ const Tutorial = ({ history, location }) => {
       title: "자막 추가하기",
       body:
         "클립 위에 자막을 추가해보세요. \n클립 단위로 자막을 추가할 수 있습니다.",
-      success: "더보기 버튼을 눌러 자막을 추가할 수 있어요",
+      success: "더보기 버튼을 눌러 추가기능을 사용하세요.",
       position: [25, 7, 0.8226600985, 0.752],
       screenUp: true,
       actiondiv: [
@@ -727,14 +727,14 @@ const Tutorial = ({ history, location }) => {
       backgroundDivAfter: "tutorial_11_4",
       tooltipDiv: [
         {
-          body: "음악 추가하기를 누르세요.",
+          body: "효과음 추가하기를 누르세요.",
           length: "75",
           arrowPosition: "bottom right",
           x: "15",
           y: "44",
         },
         {
-          body: "원하는 음악을 선택하세요.",
+          body: "원하는 효과음을 선택하세요.",
           length: "60",
           arrowPosition: "top right",
           x: "43",
@@ -748,7 +748,7 @@ const Tutorial = ({ history, location }) => {
           y: "15",
         },
         {
-          body: "음악에서 어느 부분을 사용할 지를 선택하세요.",
+          body: "효과음을 어느 위치에 배치할 지 선택하세요.",
           length: "75",
           arrowPosition: "bottom right",
           x: "10",
